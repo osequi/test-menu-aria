@@ -67,7 +67,7 @@ function MenuItem({ item, state, onAction }) {
         cursor: "pointer",
       }}
     >
-      {item.rendered}
+      <a href="https://osequi.com">{item.rendered}</a>
     </li>
   );
 }
@@ -145,7 +145,7 @@ function MenuSection({ section, state, onAction }) {
               padding: "2px 5px",
             }}
           >
-            {section.rendered}
+            <a href="http://metamn.io">{section.rendered}</a>
           </span>
         )}
         <ul
@@ -167,6 +167,10 @@ function MenuSection({ section, state, onAction }) {
       </li>
     </>
   );
+}
+
+function alert(item) {
+  console.log("alert:", item);
 }
 
 export function Home() {
