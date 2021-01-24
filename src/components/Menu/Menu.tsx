@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { useTreeState } from "@react-stately/tree";
-import { Item, Section } from "@react-stately/collections";
 import { useFocus } from "@react-aria/interactions";
 import { mergeProps } from "@react-aria/utils";
 import { useMenu, useMenuItem, useMenuSection } from "@react-aria/menu";
