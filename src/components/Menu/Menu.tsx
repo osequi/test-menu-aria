@@ -12,14 +12,29 @@ export function Menu(props) {
 
   return (
     <ul {...menuProps} ref={ref}>
-      {[...state.collection].map((item) => (
-        <MenuItem
-          key={item.key}
-          item={item}
-          state={state}
-          onAction={props.onAction}
-        />
-      ))}
+      {[...state.collection].map((item) => {
+        console.log("item:", item);
+
+        if (item.type === "item") {
+          return (
+            <MenuItem
+              key={item.key}
+              item={item}
+              state={state}
+              onAction={props.onAction}
+            />
+          );
+        } else {
+          return (
+            <MenuSection
+              key={item.key}
+              section={item}
+              state={state}
+              onAction={props.onAction}
+            />
+          );
+        }
+      })}
     </ul>
   );
 }
@@ -44,5 +59,31 @@ function MenuItem(props) {
     <li {...mergeProps(menuItemProps, focusProps)} ref={ref}>
       {item.rendered}
     </li>
+  );
+}
+
+function MenuSection(props) {
+  const { section, state, onAction } = props;
+  const { itemProps, headingProps, groupProps } = useMenuSection({
+    heading: section.rendered,
+    "aria-label": section["aria-label"],
+  });
+
+  return (
+    <>
+      <li {...itemProps}>
+        {section.rendered && <span {...headingProps}>{section.rendered}</span>}
+        <ul {...groupProps}>
+          {[...section.childNodes].map((node) => (
+            <MenuItem
+              key={node.key}
+              item={node}
+              state={state}
+              onAction={onAction}
+            />
+          ))}
+        </ul>
+      </li>
+    </>
   );
 }

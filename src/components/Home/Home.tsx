@@ -6,7 +6,7 @@ function alert(item) {
   console.log("alert:", item);
 }
 
-export function Home() {
+export function Home1() {
   return (
     <Menu onAction={alert} aria-label="Actions">
       <Item key="one">One</Item>
@@ -16,7 +16,7 @@ export function Home() {
   );
 }
 
-export function Home2() {
+export function Home() {
   return (
     <Menu onAction={alert} aria-label="Actions">
       <Section title="Section 1">
